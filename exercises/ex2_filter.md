@@ -1,4 +1,4 @@
-# Signal processing and analysis of human brain potentials (EEG) [Exercise 1]
+# Signal processing and analysis of human brain potentials (EEG) [Exercise 2]
 ## Overview
 In this exercise we will learn a lot about filters.
 
@@ -66,3 +66,6 @@ raw.load_data()
 **T** Now we filter using `raw.filter()`, specify a highpass of 0.5Hz and a lowpass of 50Hz. Plot the fourier spectrum again.
 **T** Plot the channel again, did the filter work as indented?
 **Bonus** If you want, you can compare the ERP with and without filtering. You can also use "invalid" filter settings - HP up to 2-5Hz, lowpass until 10-20Hz. I say invalid here, because usually with such ranges, you would filter out results that you are actually interested in.
+
+## Bonus: Electrical Artefacts
+Too late to fix the lecture, but instead of notch filtering 50/60Hz artefacts, one can also try to regress it out in smarter ways. A good tool for this is *Zap_Line* with a python implementation here: https://github.com/nbara/python-meegkit/. There are also several robust detrending methods, which could potentially replace highpass filters in the future. But more work needs to be invested to see how results compare. These methods are not (yet) common.

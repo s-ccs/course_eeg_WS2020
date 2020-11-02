@@ -11,7 +11,7 @@ You can choose one of three datasets from the ERP-CORE:
 - N170: A face-viewing experiments, with an effect of faces at 170ms
 - N400: A language experiment featuring a prolonged negativity at 400ms around central electrodes
 
-**Important**: There is no need to preprocess / clean all subjects. I provide cleaning times and bad channels for subjects 3-40 (see git), thus you only have to preprocess & clean **3** subjects yourself.
+**Important**: There is no need to preprocess / clean all subjects. I provide cleaning times and bad channels for subjects 3-40 (see git [note: I will provide this until end of November - sorry for the inconvenience]), thus you only have to preprocess & clean **3** subjects yourself.
 
 ## What should the project contain?
 - Preprocessing

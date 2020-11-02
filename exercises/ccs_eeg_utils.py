@@ -95,3 +95,28 @@ def download_erpcore(task="MMN",subject=1,localpath="local/bids/"):
         arguments.remote = "\\"+task+" Raw Data BIDS-Compatible/"+targetpath
         arguments.local = localpath+targetpath
         cli.fetch(arguments)
+
+
+def simulate_ICA(dims=4):
+    
+    A = [[-0.3,0.2],[.2,0.1]]
+    sample_rate = 100.0
+    nsamples = 1000
+    t = np.arange(nsamples) / sample_rate
+
+    s =[]
+
+    
+    # boxcars
+    s.append(np.mod(np.array(range(0,nsamples)),250)>125)
+    # a triangle staircase + trend
+    s.append((np.mod(np.array(range(0,nsamples)),100) + np.array(range(0,nsamples))*0.05)/100)
+    if dims == 4:
+        A = np.array([[.7,0.3,0.2,-0.5],[0.2,-0.5,-0.2,0.3],[-.3,0.1,0,0.2],[-0.5,-0.3,-0.2,0.8]])
+        
+        # some sinosoids
+        s.append(np.cos(2*np.pi*0.5*t) + 0.2*np.sin(2*np.pi*2.5*t+0.1) + 0.2*np.sin(2*np.pi*15.3*t) + 0.1*np.sin(2*np.pi*16.7*t + 0.1) + 0.1*np.sin(2*np.pi*23.45*t+.8))
+        # uniform noise
+        s.append(0.2*np.random.rand(nsamples))
+    x = np.matmul(A,np.array(s))
+    return x

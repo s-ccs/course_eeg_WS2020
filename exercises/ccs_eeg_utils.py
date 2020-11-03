@@ -58,7 +58,7 @@ def _handle_events_reading_core(events_fname, raw):
 
 # taken from the osfclient tutorial https://github.com/ubcbraincircuits/osfclienttutorial
 class args:
-    def __init__(self, project, username=None, update=False, force=True, destination=None, source=None, recursive=False, target=None, output=None, remote=None, local=None):
+    def __init__(self, project, username=None, update=True, force=False, destination=None, source=None, recursive=False, target=None, output=None, remote=None, local=None):
         self.project = project
         self.username = username
         self.update = update # applies to upload, clone, and fetch
@@ -82,7 +82,7 @@ def download_erpcore(task="MMN",subject=1,localpath="local/bids/"):
     for extension in ["channels.tsv","events.tsv","eeg.fdt","eeg.json","eeg.set"]:
         targetpath = 'sub-{:03d}/ses-{}/eeg/sub-{:03d}_ses-{}_task-{}_{}'.format(subject,task,subject,task,task,extension)
         print("Downloading {}".format(targetpath))
-        arguments.remote = "\\ERP_CORE_BIDS_Raw_Files"+targetpath
+        arguments.remote = "\\ERP_CORE_BIDS_Raw_Files/  "+targetpath
         arguments.local = localpath+targetpath
         cli.fetch(arguments)
 

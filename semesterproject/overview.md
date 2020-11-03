@@ -11,6 +11,8 @@ You can choose one of three datasets from the ERP-CORE:
 - N170: A face-viewing experiments, with an effect of faces at 170ms
 - N400: A language experiment featuring a prolonged negativity at 400ms around central electrodes
 
+You can find further information on the respective tasks in the [ERP-Core manuscript](https://doi.org/10.1016/j.neuroimage.2020.117465)
+
 **Important**: There is no need to preprocess / clean all subjects. I provide cleaning times and bad channels for subjects 3-40 (see git [note: I will provide this until end of November - sorry for the inconvenience]), thus you only have to preprocess & clean **3** subjects yourself.
 
 ## What should the project contain?
@@ -30,6 +32,7 @@ Choose 2 out of 4 (including statistics):
         Use source localization to visualize the source of the main experimental contrast *RQ: Where does our effect come from?*
 - Time Frequency analysis
         Calculate an induced time-frequency analysis of the main experimental contrast *RQ: What oscillations underley our effect of interest?*
+
 
 ## Where do I get the data?
 You can make use of scripts from the github.

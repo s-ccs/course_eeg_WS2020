@@ -76,23 +76,13 @@ class args:
         self.local = local
 
 def download_erpcore(task="MMN",subject=1,localpath="local/bids/"):
-    if task == "MMN":
-        project = "5q4xs"
-    elif task == "P3":
-        project = "etdkz"
-    elif task == "N170":
-        project = "pfde9"
-    elif task == "N400":
-        project = "29xpq"
-    else:
-        raise "Bad Taskinput, can only be MMN,P3,N170 or N400"
+    project = "9f5w7" # after recent change they put everything as "sessions" in one big BIDS file
             
     arguments = args(project) # project ID
     for extension in ["channels.tsv","events.tsv","eeg.fdt","eeg.json","eeg.set"]:
-        
-        targetpath = 'sub-{:03d}/eeg/sub-{:03d}_task-{}_{}'.format(subject,subject,task,extension)
+        targetpath = 'sub-{:03d}/ses-{}/eeg/sub-{:03d}_ses-{}_task-{}_{}'.format(subject,task,subject,task,task,extension)
         print("Downloading {}".format(targetpath))
-        arguments.remote = "\\"+task+" Raw Data BIDS-Compatible/"+targetpath
+        arguments.remote = "\\ERP_CORE_BIDS_Raw_Files"+targetpath
         arguments.local = localpath+targetpath
         cli.fetch(arguments)
 

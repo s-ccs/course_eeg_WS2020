@@ -52,7 +52,7 @@ bids_root = "../local/bids"
 subject_id = '002'
 
 
-bids_path = BIDSPath(subject=subject_id,task="P3",
+bids_path = BIDSPath(subject=subject_id,task="P3",session="P3",
                      datatype='eeg', suffix='eeg',
                      root=bids_root)
 raw = read_raw_bids(bids_path)

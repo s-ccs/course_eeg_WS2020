@@ -21,14 +21,24 @@ Test the installation by
 We will be using a typical P3 oddball dataset. We expect a positive response over parietal/central electrodes (Cz/Pz) starting at 300-400ms. Something like this: https://www.neurobs.com/manager/content/docs/psychlab101_experiments/Oddball%20Task%20(Visual)/description.html
 If you want to read the details you can find it here (the dataset is also part of the semester project): https://psyarxiv.com/4azqm/. You can also investigate the `sub-002_task-P3_eeg.json` for a task description which is automatically downloaded.
 
+
 ```
 pip install osfclient
 pip install mne-bids
 ```
+
+### Update 2020-11-04
+Unfortunately, the osf-repo was recently moved and all tasks were put together. Due to a quirky implementation of osfclient, it blindly (recursively) iterates over all files and checks each against the to-be-fetched one. Thus it can take minutes for a single file to be downloaded (and we run into API-timeouts etc.). Therefore the following code will likely not work
 ```python
 import ccs_eeg_utils
 ccs_eeg_utils.download_erpcore(task="P3",subject=2,localpath="../local/bids/")
 
+```
+And you have to download the following files manually (for now, I will provide better links soon) from osf.io/
+`["channels.tsv","events.tsv","eeg.fdt","eeg.json","eeg.set"]`
+and put them into `../local/bids/sub-002/ses-P3/eeg/sub-002_ses-P3_task-P3_XYZ` with `XZY` being the filename.
+
+```python
 # Load the data
 from mne_bids import (BIDSPath,read_raw_bids)
 
@@ -37,7 +47,7 @@ bids_root = "../local/bids"
 subject_id = '002' # recommend subject 2 for now
 
 
-bids_path = BIDSPath(subject=subject_id,task="P3",
+bids_path = BIDSPath(subject=subject_id,task="P3",session="P3",
                      datatype='eeg', suffix='eeg',
                      root=bids_root)
 

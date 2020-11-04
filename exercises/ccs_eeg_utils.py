@@ -80,9 +80,9 @@ def download_erpcore(task="MMN",subject=1,localpath="local/bids/"):
             
     arguments = args(project) # project ID
     for extension in ["channels.tsv","events.tsv","eeg.fdt","eeg.json","eeg.set"]:
-        targetpath = 'sub-{:03d}/ses-{}/eeg/sub-{:03d}_ses-{}_task-{}_{}'.format(subject,task,subject,task,task,extension)
+        targetpath = '/sub-{:03d}/ses-{}/eeg/sub-{:03d}_ses-{}_task-{}_{}'.format(subject,task,subject,task,task,extension)
         print("Downloading {}".format(targetpath))
-        arguments.remote = "\\ERP_CORE_BIDS_Raw_Files/  "+targetpath
+        arguments.remote = "\\ERP_CORE_BIDS_Raw_Files/"+targetpath
         arguments.local = localpath+targetpath
         cli.fetch(arguments)
 

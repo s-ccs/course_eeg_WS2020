@@ -82,8 +82,8 @@ evts_dict_stim=dict((k, evts_dict[k]) for k in wanted_keys if k in evts_dict)
 
 **T** Epoch the data with `epochs = mne.Epochs(raw,evts,evts_dict_stim,tmin=-0.1,tmax=1)`
 
-**T** Now that we have the epochs we should plot them. Use matplotlib and plot all trials (`epochs.get_data()`).
-**Q** How large is the variability you observe?
+**T** Now that we have the epochs we should plot them. Plot all trials 'manually', [without using mne's functionality] (`epochs.get_data()`).
+**Q** What is the unit/scale of the data now?
 
 ## My first ERP
 
@@ -94,5 +94,5 @@ distractor = ["stimulus:{}{}".format(k,j) for k in [1,2,3,4,5] for j in [1,2,3,4
 ```
 Now index the epochs `evoked = epochs[index].average()` and average them. You can then plot them either via `evoked.plot()` or with `mne.viz.plot_compare_evokeds([evokedA,evokedB])`.
 
-**Q** How large is the variability you observe? Set it into context to the other two variabilities (**Q**'s higher up).
+**Q** What is the unit/scale of the data now? Set it into context to the other two scales you reported (**Q**'s higher up).
 

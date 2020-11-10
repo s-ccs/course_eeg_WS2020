@@ -37,7 +37,7 @@ Repeat the steps from above, but this time, remove the low frequency components
  Add a DC-offset starting from `x[200:]` and investigate the fourier space. Also transfer it back to the time domain and investigate the signal around the spike.
 
  ## Impulse Response Function
- To get a bit deeper understanding of what is going on, have a look at the fourier transform of a impulse (e.g. 1:400 => 0. and 200 => 1.). What do you observe?
+ To get a bit deeper understanding of what is going on, have a look at the fourier transform of a new impulse signal (e.g. 1:400 => 0. and 200 => 1.). What do you observe?
  Why would we see ringing if we put most of the coefficients to 0?
 
  ## Filtering EEG data

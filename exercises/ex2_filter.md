@@ -9,7 +9,7 @@ We start out with a simple signal:
 from numpy import cos, sin, pi,  arange
 
 sample_rate = 100.0
-nsamples = 700
+nsamples = 400
 t = arange(nsamples) / sample_rate
 x = cos(2*pi*0.5*t) + 0.2*sin(2*pi*2.5*t+0.1) + \
         0.2*sin(2*pi*15.3*t) + 0.1*sin(2*pi*16.7*t + 0.1) + \

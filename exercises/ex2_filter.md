@@ -61,10 +61,14 @@ raw.load_data()
 ```
 
 
-**T** Choose the channel "Pz", plot the channel (same as previous HW)
-**T** Plot the fourier space using `raw.plot_psd`
-**T** Now we filter using `raw.filter()`, specify a highpass of 0.5Hz and a lowpass of 50Hz. Plot the fourier spectrum again.
-**T** Plot the channel again, did the filter work as indented?
+**T:** Choose the channel "Pz", plot the channel (same as previous HW)
+
+**T:** Plot the fourier space using `raw.plot_psd`
+
+**T:** Now we filter using `raw.filter()`, specify a highpass of 0.5Hz and a lowpass of 50Hz. Plot the fourier spectrum again.
+
+**T:** Plot the channel again, did the filter work as indented?
+
 **Bonus** If you want, you can compare the ERP with and without filtering. You can also use "invalid" filter settings - HP up to 2-5Hz, lowpass until 10-20Hz. I say invalid here, because usually with such ranges, you would filter out results that you are actually interested in.
 
 ## Bonus: Electrical Artefacts

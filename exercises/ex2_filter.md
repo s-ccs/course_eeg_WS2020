@@ -34,7 +34,7 @@ Repeat the steps from above, but this time, remove the low frequency components
 
 
 ## What happens to the frequency and time response if we add "artefacts"?
- Add a DC-offset starting from `x[200:]` and investigate the fourier space. Filter it again (low or high pass) and transfer it back to the time domain and investigate the signal around the spike.
+ Add a DC-offset (a step-function) starting from `x[200:]` and investigate the fourier space. Filter it again (low or high pass) and transfer it back to the time domain and investigate the signal around the spike.
 
  ## Impulse Response Function
  To get a bit deeper understanding of what is going on, have a look at the fourier transform of a new impulse signal (e.g. 1:400 => 0. and 200 => 1.). What do you observe?

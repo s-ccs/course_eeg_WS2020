@@ -9,7 +9,7 @@ We start out with a simple signal:
 from numpy import cos, sin, pi,  arange
 
 sample_rate = 100.0
-nsamples = 700
+nsamples = 400 # fixed at 11.11.2020
 t = arange(nsamples) / sample_rate
 x = cos(2*pi*0.5*t) + 0.2*sin(2*pi*2.5*t+0.1) + \
         0.2*sin(2*pi*15.3*t) + 0.1*sin(2*pi*16.7*t + 0.1) + \
@@ -37,7 +37,7 @@ Repeat the steps from above, but this time, remove the low frequency components
  Add a DC-offset starting from `x[200:]` and investigate the fourier space. Filter it again (low or high pass) and transfer it back to the time domain and investigate the signal around the spike.
 
  ## Impulse Response Function
- To get a bit deeper understanding of what is going on, have a look at the fourier transform of a impulse (e.g. 1:400 => 0. and 200 => 1.). What do you observe?
+ To get a bit deeper understanding of what is going on, have a look at the fourier transform of a new impulse signal (e.g. 1:400 => 0. and 200 => 1.). What do you observe?
  Why would we see ringing if we put most of the coefficients to 0?
 
  ## Filtering EEG data
@@ -61,10 +61,14 @@ raw.load_data()
 ```
 
 
-**T** Choose the channel "Pz", plot the channel (same as previous HW)
-**T** Plot the fourier space using `raw.plot_psd`
-**T** Now we filter using `raw.filter()`, specify a highpass of 0.5Hz and a lowpass of 50Hz. Plot the fourier spectrum again.
-**T** Plot the channel again, did the filter work as indented?
+**T:** Choose the channel "Pz", plot the channel (same as previous HW)
+
+**T:** Plot the fourier space using `raw.plot_psd`
+
+**T:** Now we filter using `raw.filter()`, specify a highpass of 0.5Hz and a lowpass of 50Hz. Plot the fourier spectrum again.
+
+**T:** Plot the channel again, did the filter work as indented?
+
 **Bonus** If you want, you can compare the ERP with and without filtering. You can also use "invalid" filter settings - HP up to 2-5Hz, lowpass until 10-20Hz. I say invalid here, because usually with such ranges, you would filter out results that you are actually interested in.
 
 ## Bonus: Electrical Artefacts

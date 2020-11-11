@@ -1,6 +1,6 @@
 
 
-# Signal processing and analysis of human brain potentials (EEG) [Exercise 4]
+# Signal processing and analysis of human brain potentials (EEG) [Exercise 5]
 (This assignment is directly based on the [ERP PURSUE](https://pursue.richmond.edu/) Course)
 
 The purpose of this assignment is to develop your ability to read and critically evaluate a journal article that uses ERP techniques to answer a research question. Specifically, you should be able to identify the research question and important elements of the research design, and explain how the ERP data help to answer this question. Don’t get bogged down with other details in the paper. Instead, use the assignment questions to guide your reading.  Type your answers in the text field below each question.  USE YOUR OWN WORDS to answer the questions. 
@@ -17,13 +17,14 @@ Tanaka, J. W., & Curran, T. (2001). A neural basis for expert object recognition
 2.	Using an if/then statement, what was the hypothesis? The “if” part should relate to the theory, and the “then” part should relate to the expected ERP results.
      
 3.	Complete the table below describing the order of trial events and their timing.
-|Event Number|	Event Name|	Timing |
-| -- | -- | -- |
-|1 | | |
-|2 | | |
-|3 | | |
-|4 | | |
-|5 | | |
+
+| Event Number | Event Name | Timing |
+| ----- | ----- | ----- |
+| 1 |  |  |
+| 2 |  |  |
+| 3 |  |  |
+| 4 |  |  |
+| 5 |  |  |
 
 Possible events: Picture, Category, Blank, Fixation, True/False Prompt
 possible timings: 255ms, 570ms, 735ms, 1000-1500ms, until response

@@ -61,9 +61,9 @@ raw.load_data()
 ```
 
 
-**T:** Choose the channel "Pz", plot the channel (same as previous HW)
+**T:** Choose the channel "Pz", plot the channel (previous HW it was "Cz")
 
-**T:** Plot the fourier space using `raw.plot_psd`
+**T:** Plot the fourier space using `raw.plot_psd()`
 
 **T:** Now we filter using `raw.filter()`, specify a highpass of 0.5Hz and a lowpass of 50Hz. Plot the fourier spectrum again.
 

@@ -2,7 +2,7 @@
 
 The goal of this project is to analyse and document a EEG dataset using MNE-Python.
 
-How I will grade the projects can be seen in [grading.md]. I value line of thinking and documented motivation higher than results. I want to see that you understand, what you are doing.
+How I will grade the projects can be seen in [grading](grading.md). I value line of thinking and documented motivation higher than results. I want to see that you understand, what you are doing.
 
 ## Which Dataset?
 You can choose one of three datasets from the ERP-CORE:

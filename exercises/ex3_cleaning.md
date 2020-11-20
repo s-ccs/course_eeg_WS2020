@@ -1,6 +1,6 @@
 # Signal processing and analysis of human brain potentials (EEG) [Exercise 3]
 ## Cleaning Data
-**T:** Download the `P3` dataset for Subject `9` from the [ERPcore](https://osf.io/thsqg/).
+**T:** Download the `P3` dataset for Subject `30` (before 2020-11-20 12.53 this stated subject 9, sorry!) from the [ERPcore](https://osf.io/thsqg/).
 
 **T:** Go through the dataset using the MNE explorer and clean it. You can use `raw.plot()` for this. If you are working from a jupyter notebook, try to use `%matplotlib qt` for better support of the cleaning window. To get an understanding how the tool works, press `help` or type `?` in the window. (Hint: You first have to add a new annotation by pressing `a`)
 

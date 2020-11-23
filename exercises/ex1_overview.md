@@ -58,14 +58,14 @@ ccs_eeg_utils.read_annotations_core(bids_path,raw)
 
 ```
 
-**T:** Extract a single channel and plot the whole timeseries. You can directly interact with the `raw` object, e.g. `raw[1:10,1:2000]` extracts the first 10 channels and 2000 samples.
-**Q:** What is the unit/scale of the data?
+**T:** Extract a single channel and plot the whole timeseries. You can directly interact with the `raw` object, e.g. `raw[1:10,1:5000]` extracts the first 10 channels and 2000 samples.
+**Q:** What is the unit/scale of the data (in sense of "range" of data)?
 
 **T:** Have a look at `raw.info` and note down what the sampling frequency is (how many EEG-samples per second)
 
 ## Epoching 
 
-**T:** We will epoch the data now. Formost we will cut the raw data to one channel using `raw.pick_channels(["Cz"])` - not that this will permanently change the "raw" object and "deletes" alle other channels from memory. If you want rather a copy you could use `raw_subselect = raw.copy().pick_channels(["Cz"]))`.
+**T:** We will epoch the data now. Formost we will cut the raw data to one channel using `raw.pick_channels(["Cz"])` - note that this will permanently change the "raw" object and "deletes" alle other channels from memory. If you want rather a copy you could use `raw_subselect = raw.copy().pick_channels(["Cz"]))`.
 
 
 **T** Let's investigate the annotation markers. Have a look at raw.annotations. These values reflect the values in the bids `*_events.tsv`  file (have a look at the files in `../local/bids/sub-002/sub-002_task-P3_events.tsv`). BIDS is a new standard to share neuroimaging and other physiological data. It is not really a fileformat, but more of a folder & filename structure with some additional json files. I highly recommend to put your data into bids-format as soon as possible. It helps you stay organized and on top of things!
@@ -82,7 +82,7 @@ evts_dict_stim=dict((k, evts_dict[k]) for k in wanted_keys if k in evts_dict)
 
 **T** Epoch the data with `epochs = mne.Epochs(raw,evts,evts_dict_stim,tmin=-0.1,tmax=1)`
 
-**T** Now that we have the epochs we should plot them. Plot all trials 'manually', [without using mne's functionality] (`epochs.get_data()`).
+**T** Now that we have the epochs we should plot them. Plot all trials 'manually', (without using mne's functionality) (`epochs.get_data()`).
 **Q** What is the unit/scale of the data now?
 
 ## My first ERP

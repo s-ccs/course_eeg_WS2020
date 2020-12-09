@@ -13,7 +13,7 @@ You can choose one of three datasets from the ERP-CORE [download from here]( htt
 
 You can find further information on the respective tasks in the [ERP-Core manuscript](https://doi.org/10.1016/j.neuroimage.2020.117465)
 
-**Important**: There is no need to preprocess / clean all subjects. I provide ICA, cleaning times and bad channels for subjects all subjects [here (bundled with raw data]( https://figshare.com/s/5dcdc5388d4b3f37296d) find scripts to easily load those in ../exercises/ccs_eeg_semesterproject.py). You should preprocess & clean **3** subjects yourself and provide/document the cleaning times / bad channels for me. As long as you document the bad components of the ICA, I see no need to send me the ICA-decomposition.
+**Important**: There is no need to preprocess / clean all subjects. I provide ICA, cleaning times and bad channels for subjects all subjects [here (bundled with raw data)]( https://figshare.com/s/5dcdc5388d4b3f37296d) find scripts to easily load those in ../exercises/ccs_eeg_semesterproject.py). You should preprocess & clean **3** subjects yourself and provide/document the cleaning times / bad channels for me. As long as you document the bad components of the ICA, I see no need to send me the ICA-decomposition.
 
 ## What should the project contain?
 - Preprocessing

@@ -1,5 +1,5 @@
 ## Statistical Analysis of N170 area using Linear Regression
-*T* Load the data into a pandas dataframe. A very useful concept here is the concept of a tidy dataframe. The idea is, that every observation is one row of a table, where columns are potential features / descriptors + the independent variable (the average activity at PO8 here).
+*T* Load the data into a pandas dataframe. A very useful concept here is the concept of a tidy dataframe. The idea is, that every observation is one row of a table, where columns are potential features / descriptors + the dependent variable (the average activity at PO8 here).
 
 ```python
 import pandas as pd

@@ -1,5 +1,5 @@
 ## Statistical Analysis of N170 area using Linear Regression
-*T* Load the data into a pandas dataframe. A very useful concept here is the concept of a tidy dataframe. The idea is, that every observation is one row of a table, where columns are potential features / descriptors + the dependent variable (the average activity at PO8 here).
+*T* Load the data into a pandas dataframe. A very useful concept here is the concept of a tidy dataframe. The idea is, that every observation is one row of a table, where columns are potential features / descriptors + the dependent variable (the average activity between 130 and 200ms at electrode PO8 here).
 
 ```python
 import pandas as pd
@@ -11,7 +11,7 @@ d = pd.read_csv("ex6_N170.csv",delimiter=",")
 
 
 ### Do-It-Yourself Linear Models
-We have to generate a DesignMatrix in order to fit our model. The simplest designmatrix consists only of "1", one for each data-point.
+We have to generate a DesignMatrix ($X$) in order to fit our model. The designmatrix has to reflect our study design. The simplest designmatrix consists only of "1", one for each data-point, which would mean that we fit only one parameter summarizing the whole dataset.
 
 **T:** Generate this designmatrix and fit it using the pseudo-inverse: $(X^TX)^{-1}X^TY$. I recommend to generate a function similar to this:
 ```python

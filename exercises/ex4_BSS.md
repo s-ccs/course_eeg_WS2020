@@ -18,10 +18,10 @@ turn =lambda k: np.reshape(np.array([np.cos(k), np.sin(k), -np.sin(k), np.cos(k)
 ```
 for t in 0:pi
     x_bar = turn(t) * x_white
-    kurtosis(x_bar)
+    abs(kurtosis(x_bar))
 ```
 
-The solution to ICA would be then `min(kurtosis_list)`.
+The solution to ICA would be then `argmax(kurtosis_list)`.
 
 **T:** Plot the solution! 
 
@@ -74,3 +74,4 @@ ica.apply(reconst_raw)
 raw.plot()
 reconst_raw.plot()  
 ```
+Or use one of MNEs functionalities: ```ica.plot_overlay(raw,exclude=[1,8,9])`` 

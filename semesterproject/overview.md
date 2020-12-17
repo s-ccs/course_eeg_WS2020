@@ -5,7 +5,7 @@ The goal of this project is to analyse and document a EEG dataset using MNE-Pyth
 How I will grade the projects can be seen in [grading](grading.md). I value line of thinking and documented motivation higher than results. I want to see that you understand, what you are doing.
 
 ## Which Dataset?
-You can choose one of three datasets from the ERP-CORE:
+You can choose one of three datasets from the ERP-CORE [download from here]( https://figshare.com/s/5dcdc5388d4b3f37296d):
 
 - P300: A visual oddball experiment with a prolonged effect at 300ms.
 - N170: A face-viewing experiments, with an effect of faces at 170ms
@@ -13,7 +13,7 @@ You can choose one of three datasets from the ERP-CORE:
 
 You can find further information on the respective tasks in the [ERP-Core manuscript](https://doi.org/10.1016/j.neuroimage.2020.117465)
 
-**Important**: There is no need to preprocess / clean all subjects. I provide cleaning times and bad channels for subjects 3-40 (see git [note: I will provide this until end of November - sorry for the inconvenience]), thus you only have to preprocess & clean **3** subjects yourself.
+**Important**: There is no need to preprocess / clean all subjects. I provide ICA, cleaning times and bad channels for subjects all subjects [here (bundled with raw data)]( https://figshare.com/s/5dcdc5388d4b3f37296d) find scripts to easily load those in ../exercises/ccs_eeg_semesterproject.py). You should preprocess & clean **3** subjects yourself and provide/document the cleaning times / bad channels for me. As long as you document the bad components of the ICA, I see no need to send me the ICA-decomposition.
 
 ## What should the project contain?
 - Preprocessing

@@ -110,3 +110,24 @@ def simulate_ICA(dims=4):
         s.append(0.2*np.random.rand(nsamples))
     x = np.matmul(A,np.array(s))
     return x
+
+
+
+def spline_matrix(x,knots):
+    # bah, spline-matrices are a pain to implement. 
+    # But package "patsy" with function "bs" crashed my notebook...
+    # Anyway, knots define where the spline should be anchored. The default should work
+    # X defines where the spline set should be evaluated.
+    # e.g. call using: spline_matrix(np.linspace(0,0.95,num=100))
+    import scipy.interpolate as si
+
+    x_tup = si.splrep(knots, knots, k=3)
+    nknots = len(x_tup[0])
+    x_i = np.empty((len(x),nknots-4))
+    for i in range(nknots-4):
+        vec = np.zeros(nknots)
+        vec[i] = 1.0
+        x_list = list(x_tup)
+        x_list[1] = vec.tolist()
+        x_i[:,i] = si.splev(x, x_list)
+    return x_i

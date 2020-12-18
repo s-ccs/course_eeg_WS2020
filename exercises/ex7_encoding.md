@@ -24,7 +24,7 @@ limo_epochs = load_data(subject=4,path='../local/limo') #
 We now have values for an intercept and for a slope, but it is hard to gauge the true meaning of the slope. Therefore we going to generate predicted values at specific levels of the continuous variable. Note that in principle, you could also extrapolate (going outside the range of 0,1) or interpolate (values that were not run in the experiment), but it is not necessary here.
 These predictions can be seen as conditional ERPs, because you condition on the continuous variable to be a specific value.
 
-- Evaluate continuous regressor at the 18 coherence (noise) levels and plot them (hint: you could use $X_{new}b$ but dont have to in this simple example)
+- Evaluate continuous regressor at the unique 18 coherence (noise) levels that were used in the experiment and plot them (hint: you could use $X_{new}b$ but dont have to in this simple example)
 - Should you add the Intercept to the resulting Plot?
 
 ## Compare it to binned data

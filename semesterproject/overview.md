@@ -21,7 +21,7 @@ You can find further information on the respective tasks in the [ERP-Core manusc
 - Data cleaning:
         Time, channel and subjects
 - ERP peak analysis
-        Extract the study-relevant ERP peak subjectwise and statistically test them. *RQ: On which peaks do we find major difference between the conditions?*
+        Extract the study-relevant ERP peak subjectwise (e.g. one value per subject) and statistically test them. *RQ: On which ERP-peaks do we find major difference between the conditions?*
 
 Choose 2 out of 4 (including statistics):
 - Mass Univariate

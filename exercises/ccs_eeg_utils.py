@@ -1,9 +1,14 @@
 from osfclient import cli
 import os
 from mne_bids.read import _from_tsv,_drop
+from mne_bids import (BIDSPath,read_raw_bids)
+import mne_bids
 import mne
 import numpy as np
 
+import scipy.ndimage
+import scipy.signal
+from numpy import sin as sin
 
 def read_annotations_core(bids_path,raw):
     tsv=os.path.join(bids_path.directory,bids_path.update(suffix="events",extension=".tsv").basename)
@@ -131,3 +136,88 @@ def spline_matrix(x,knots):
         x_list[1] = vec.tolist()
         x_i[:,i] = si.splev(x, x_list)
     return x_i
+
+
+
+
+def simulate_TF(signal=1,noise=True):
+    # signal can be 1 (image), 2(chirp) or 3 (steps)
+    import imageio
+
+    if signal == 2:
+        im = imageio.imread('ex9_tf.png')
+
+        im = im[0:60,:,3]-im[0:60,:,1]
+        #im = scipy.ndimage.zoom(im,[1,1])
+        im = np.flip(im, axis=0)
+    
+        #plt.imshow(im,origin='lower')
+
+        #sig = (scipy.fft.irfft(im.T,axis=1))
+
+        nov = 10;im.shape[0]*0.5
+        nperseg = 50;im.shape[0]-1
+        t,sig = scipy.signal.istft(im,fs = 500,noverlap = nov,nperseg=nperseg)
+        sig = sig/300 # normalize
+    elif signal == 3:
+        sig = scipy.signal.chirp(t=np.arange(0,10,1/500),f0=1,f1=100,t1=2,method='linear',phi=90)
+    elif signal == 1:
+
+        x = np.arange(0,2,1/500)
+        sig_steps = np.concatenate([1.0*sin(2*np.pi*x*50),1.2*sin(2*np.pi*x*55+np.pi/2), 0.8*sin(2*np.pi*x*125+np.pi), 1.0*sin(2*np.pi*x*120+3*np.pi/2)])
+    
+        sig = sig_steps
+    if noise:
+        sig = sig + 0.1*np.std(sig) * np.random.randn(sig.shape[0])
+
+    
+    return sig
+
+
+def get_TF_dataset(subject_id = '002',bids_root = "../local/bids"):
+
+    bids_path = BIDSPath(subject=subject_id,task="P3",session="P3",
+                        datatype='eeg', suffix='eeg',
+                        root=bids_root)
+
+    raw = read_raw_bids(bids_path)
+    read_annotations_core(bids_path,raw)
+    #raw.pick_channels(["Cz"])#["Pz","Fz","Cz"])
+    raw.load_data()
+    raw.set_montage('standard_1020',match_case=False)
+
+    evts,evts_dict = mne.events_from_annotations(raw)
+    wanted_keys = [e for e in evts_dict.keys() if "response" in e]
+    evts_dict_stim=dict((k, evts_dict[k]) for k in wanted_keys if k in evts_dict)
+    epochs = mne.Epochs(raw,evts,evts_dict_stim,tmin=-1,tmax=2)
+    return epochs
+
+
+def get_classification_dataset(subject=6):
+    from mne.io import concatenate_raws, read_raw_edf
+    from mne.datasets import eegbci
+
+    tmin, tmax = -1., 4.
+    event_id = dict(left=2, right=3)
+    runs = [5,9,13]
+    runs = [3,7,11]
+
+    raw_fnames = eegbci.load_data(subject, runs)
+    raws = [read_raw_edf(f, preload=True) for f in raw_fnames]
+    raw = concatenate_raws(raws)
+
+    eegbci.standardize(raw)  # set channel names
+    montage = mne.channels.make_standard_montage('standard_1005')
+    raw.set_montage(montage)
+    raw.rename_channels(lambda x: x.strip('.'))
+    events, _ = mne.events_from_annotations(raw, event_id=dict(T1=2, T2=3))
+
+
+    picks = mne.pick_types(raw.info, meg=False, eeg=True, stim=False, eog=False,
+                    exclude='bads')
+
+    # Read epochs (train will be done only between 1 and 2s)
+    # Testing will be done with a running classifier
+    epochs = mne.Epochs(raw, events, event_id, tmin, tmax, proj=True, picks=picks,
+                    baseline=None, preload=True)
+    return(epochs)

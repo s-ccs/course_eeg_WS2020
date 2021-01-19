@@ -139,7 +139,6 @@ def spline_matrix(x,knots):
 
 
 
-
 def simulate_TF(signal=1,noise=True):
     # signal can be 1 (image), 2(chirp) or 3 (steps)
     import imageio
@@ -221,3 +220,24 @@ def get_classification_dataset(subject=6):
     epochs = mne.Epochs(raw, events, event_id, tmin, tmax, proj=True, picks=picks,
                     baseline=None, preload=True)
     return(epochs)
+
+def ex8_simulateData(width=40,n_subjects=15,signal_mean=100,noise_between = 30,noise_within=10,smooth_sd=4,rng_seed=43):
+    # adapted and extended from https://mne.tools/dev/auto_tutorials/discussions/plot_background_statistics.html#sphx-glr-auto-tutorials-discussions-plot-background-statistics-py
+    rng = np.random.RandomState(rng_seed)
+        # For each "subject", make a smoothed noisy signal with a centered peak
+    
+    X = noise_within * rng.randn(n_subjects, width, width)
+    # Add three signals
+    X[:, width // 6 * 2, width // 6*2] -= signal_mean/3*3 + rng.randn(n_subjects) * noise_between
+    X[:, width // 6 * 4, width // 6*4] += signal_mean/3*2 + rng.randn(n_subjects) * noise_between
+    X[:, width // 6 * 5, width // 6*5] += signal_mean/3*2 + rng.randn(n_subjects) * noise_between
+    # Spatially smooth with a 2D Gaussian kernel
+    size = width // 2 - 1
+    gaussian = np.exp(-(np.arange(-size, size + 1) ** 2 / float(smooth_sd ** 2)))
+    for si in range(X.shape[0]):
+        for ri in range(X.shape[1]):
+            X[si, ri, :] = np.convolve(X[si, ri, :], gaussian, 'same')
+        for ci in range(X.shape[2]):
+            X[si, :, ci] = np.convolve(X[si, :, ci], gaussian, 'same')
+    #X += 10 * rng.randn(n_subjects, width, width)            
+    return X

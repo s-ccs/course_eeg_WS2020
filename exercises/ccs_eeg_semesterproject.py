@@ -5,19 +5,21 @@ import numpy as np
 import pandas as pd
 from mne_bids import (BIDSPath, read_raw_bids)
 
-def _get_filepath(bids_root,subject_id):
-    bids_path = BIDSPath(subject=subject_id,task="P3",session="P3",
+def _get_filepath(bids_root,subject_id,task):
+    bids_path = BIDSPath(subject=subject_id,task=task,session=task,
                      datatype='eeg', suffix='eeg',
                      root=bids_root)
     # this is not a bids-conform file format, but a derivate/extension. Therefore we have to hack a bit
     # Depending on path structure, this might push a warning.
-    fn = bids_path.fpath.__str__()[0:-3]
+    fn = os.path.splitext(bids_path.fpath.__str__())[0]
+    assert(fn[-3:]=="eeg")
+    fn = fn[0:-3]
     return fn
 
-def load_precomputed_ica(bids_root,subject_id):
+def load_precomputed_ica(bids_root,subject_id,task):
     # returns ICA and badComponents (starting at component = 0).
     # Note the existance of add_ica_info in case you want to plot something.
-    fn = _get_filepath(bids_root,subject_id)+'ica'
+    fn = _get_filepath(bids_root,subject_id,task)+'ica'
 
     # import the eeglab ICA. I used eeglab because the "amica" ICA is a bit more powerful than runica
     ica = mne.preprocessing.read_ica_eeglab(fn+'.set')
@@ -44,11 +46,12 @@ def add_ica_info(raw,ica):
     ica.info = info
 
     return ica
-def load_precomputed_badData(bids_root,subject_id):
+def load_precomputed_badData(bids_root,subject_id,task):
     # return precomputed annotations and bad channels (first channel = 0)
 
-    fn = _get_filepath(bids_root,subject_id)
-    
+    fn = _get_filepath(bids_root,subject_id,task)
+    print(fn)
+
     tmp = pd.read_csv(fn+'badSegments.csv')
     #print(tmp)
     annotations = mne.Annotations(tmp.onset,tmp.duration,tmp.description)

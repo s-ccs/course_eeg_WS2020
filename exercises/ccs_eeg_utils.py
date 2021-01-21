@@ -192,18 +192,32 @@ def get_TF_dataset(subject_id = '002',bids_root = "../local/bids"):
     return epochs
 
 
-def get_classification_dataset(subject=6):
+def get_classification_dataset(subject=1,typeInt=4):
+    #TypeInt:
+    #Task 1 (open and close left or right fist)
+    #Task 2 (imagine opening and closing left or right fist)
+    #Task 3 (open and close both fists or both feet)
+    #Task 4 (imagine opening and closing both fists or both feet)
+    assert(typeInt>=1)
+    assert(typeInt<=4)
     from mne.io import concatenate_raws, read_raw_edf
     from mne.datasets import eegbci
-
     tmin, tmax = -1., 4.
-    event_id = dict(left=2, right=3)
-    runs = [5,9,13]
     runs = [3,7,11]
+    runs = [r+typeInt-1 for r in runs]
+    print("loading subject {} with runs {}".format(subject,runs))
+    if typeInt <= 1:
+        event_id = dict(left=2, right=3)
+    else:
+        event_id = dict(hands=2, feet=3)        
+        
 
+    
     raw_fnames = eegbci.load_data(subject, runs)
     raws = [read_raw_edf(f, preload=True) for f in raw_fnames]
     raw = concatenate_raws(raws)
+
+    raw.filter(7., 30., fir_design='firwin', skip_by_annotation='edge')
 
     eegbci.standardize(raw)  # set channel names
     montage = mne.channels.make_standard_montage('standard_1005')

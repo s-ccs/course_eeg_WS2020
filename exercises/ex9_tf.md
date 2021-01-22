@@ -8,7 +8,7 @@ Get the first signal using `sig = ccs_eeg_utils.simulate_TF(signal=1)`.  For now
 
 **T:** Apply the stft using `scipy.signal.stft` . Systematically vary the `nperseg` from 32 to 256 in ~5 steps. Choose an `noverlap` of `0.9*nperseg`.
 
-**T:** Plot the resulting STFTs as a colorcoded 2D plot. If you use `plt.imshow` be sure to use `interpolation='none'`.
+**T:** Plot the resulting STFTs as a colorcoded 2D plot. If you use `plt.imshow`, be sure to use `interpolation='None'`. Furthermore, `aspect="auto"` may be helpful to fixate the sizes of the plot axes and `origin='lower'` will prevent the y-axis from being inverted.
 
 **Q:** What do you observe? Which `nperseg` is ideal for frequency-resolution, which for time-resolution? Do the signals overlap in time?
 

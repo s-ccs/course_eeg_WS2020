@@ -255,3 +255,17 @@ def ex8_simulateData(width=40,n_subjects=15,signal_mean=100,noise_between = 30,n
             X[si, :, ci] = np.convolve(X[si, :, ci], gaussian, 'same')
     #X += 10 * rng.randn(n_subjects, width, width)            
     return X
+
+
+def stc_plot2img(h,title="SourceEstimate",closeAfterwards=False,crop=True):
+    h.add_text(0.1, 0.9, title, 'title', font_size=16)
+    screenshot = h.screenshot()
+    if closeAfterwards:
+        h.close()
+
+    if crop:
+        nonwhite_pix = (screenshot != 255).any(-1)
+        nonwhite_row = nonwhite_pix.any(1)
+        nonwhite_col = nonwhite_pix.any(0)
+        screenshot = screenshot[nonwhite_row][:, nonwhite_col]
+    return screenshot

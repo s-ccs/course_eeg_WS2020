@@ -56,7 +56,7 @@ Choose a baseline of -.5 to 0 using the command `power.plot_topo()`
 
 
 **T:** Now lets improve upon our frequency resolution nz increasing the number of cycles to 3. Plot channel Cz with BSL correction
-(-0.5,1). Tipp: you can speed up the calculation by specifying `picks="Cz"`
+(-0.5,0). Tipp: you can speed up the calculation by specifying `picks="Cz"`
 
 
 

@@ -14,7 +14,7 @@ We will skip these steps completly and start with an already-segment "default" M
  Source-reconstructions with a default-MRI (opposite of a individual MRI) introduces even more noise (=uncertainty) than already existing in "optimal" source localization. Your source-localizations should therefore be interpreted even more carefully than with individual MRIs. Never let yourself be fooled by the apparent precision of source-localizations!!
 
 # Setup
-We first need to install the python packages "pysurfer" and "pymayavi" - if pymayavi doesnt work,you can also try pyvista & pyvistaqt
+We first need to install the python packages "pysurfer" and "mayavi" - if mayavi doesnt work,you can also try pyvista & pyvistaqt
 
 ### !! 3D Frustration alert!! 
 3D Plots are annoying. They crash your system, they are slow, they are unstable. The frustration is normal and unfortunately still to be expected.

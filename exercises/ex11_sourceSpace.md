@@ -78,6 +78,7 @@ p
 The forward model translates source-activity to sensor-activity. We have to provide the sensor locations (`epochs.info`), the **trans**formations of sensorlocations to BEM model (`trans`) and the actual physical spheres (bem). The default conductivities for the BEM model are already saved in the pre-computed standard BEM model.
 
 
+The standard-forward model can be calculated using `fwd = mne.make_forward_solution(epochs.info, trans=trans, src=src, bem=bem, eeg=True, mindist=5.0)`
 
 The leadfield can be extracted by `fwd["sol"]["data"]`. 
 

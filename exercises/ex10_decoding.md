@@ -134,7 +134,7 @@ Because we will get multiple scores per cross-val, we also have to switch our sc
 
 You might be surprised - or not - by the performance you observed. Applying this to a dataset with actual evoked responses, will likely be much more satisfactory.
 
-The reason seems clear, we would need CSP in between. But CSP needs multiple timepoints and doesntwork with SlidingEstimator. We have to do it manually.
+The reason seems clear, we would need CSP in between. But CSP needs multiple timepoints and doesn't work with SlidingEstimator. We'd have to do it manually.
 
 ### A quick note on statistics
 In a real decoding study, you'd run the decoder for each subject. This would give you a mean accuracy value per subject, which you would put into a significance test (best in a permutation test, because accuracies don't follow a normal distribution).

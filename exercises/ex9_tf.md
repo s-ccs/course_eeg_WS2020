@@ -10,7 +10,7 @@ Get the first signal using `sig = ccs_eeg_utils.simulate_TF(signal=1)`.  For now
 
 **T:** Plot the resulting STFTs as a colorcoded 2D plot. If you use `plt.imshow`, be sure to use `interpolation='None'`. Furthermore, `aspect="auto"` may be helpful to fixate the sizes of the plot axes and `origin='lower'` will prevent the y-axis from being inverted.
 
-**Q:** What do you observe? Which `nperseg` is ideal for frequency-resolution, which for time-resolution? Do the signals overlap in time?
+**Q:** What do you observe? Which `nperseg` is ideal for frequency-resolution, which for time-resolution? Do the oscillations overlap in time?
 
 **T:** Change the noverlap to `0.3*n`. What changes?
 

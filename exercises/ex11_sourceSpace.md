@@ -14,7 +14,7 @@ We will skip these steps completly and start with an already-segment "default" M
  Source-reconstructions with a default-MRI (opposite of a individual MRI) introduces even more noise (=uncertainty) than already existing in "optimal" source localization. Your source-localizations should therefore be interpreted even more carefully than with individual MRIs. Never let yourself be fooled by the apparent precision of source-localizations!!
 
 # Setup
-We first need to install the python packages "pysurfer" and "pymayavi" - if pymayavi doesnt work,you can also try pyvista & pyvistaqt
+We first need to install the python packages "pysurfer" and "mayavi" - if mayavi doesnt work,you can also try pyvista & pyvistaqt
 
 ### !! 3D Frustration alert!! 
 3D Plots are annoying. They crash your system, they are slow, they are unstable. The frustration is normal and unfortunately still to be expected.
@@ -78,6 +78,7 @@ p
 The forward model translates source-activity to sensor-activity. We have to provide the sensor locations (`epochs.info`), the **trans**formations of sensorlocations to BEM model (`trans`) and the actual physical spheres (bem). The default conductivities for the BEM model are already saved in the pre-computed standard BEM model.
 
 
+The standard-forward model can be calculated using `fwd = mne.make_forward_solution(epochs.info, trans=trans, src=src, bem=bem, eeg=True, mindist=5.0)`
 
 The leadfield can be extracted by `fwd["sol"]["data"]`. 
 

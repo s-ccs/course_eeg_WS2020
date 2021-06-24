@@ -13,6 +13,7 @@ from mne.datasets.limo import load_data
 # choose any subject 1 - 18
 limo_epochs = load_data(subject=4,path='../local/limo') #
 ```
+**Note**: First time this will automatically download the dataset to *path*
 
 - Extract data from electrode `B11`, this will be your 'y'
 - The linear covariate is saved in a dataframe called limo_epochs.metadata. Metadata is yet another way that you can save event-related information besides annotations & events
